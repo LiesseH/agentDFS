@@ -90,6 +90,7 @@ function findNext({position: p, map}) {
 	var lst = getNext({position: p, map});
 	var visited = {};
 	var np;
+	let dfs_lst;
 	while (lst.length) {
 		np = lst.shift();
 		if ( visited[np.x + '-' + np.y] )
@@ -98,7 +99,8 @@ function findNext({position: p, map}) {
 		if (!map[np.y][np.x].visited)
 			return np.move;
 		else
-			lst = getNext({position: np, map}, np.move).concat(lst);
+			dfs_lst = getNext({position: np, map}, np.move).concat(lst);
+			lst = dfs_lst;
 	}
 	process.exit();
 }
