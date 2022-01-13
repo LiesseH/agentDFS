@@ -106,18 +106,19 @@ function findNext({position: p, map}) {
 function getNext({position: p, map}, firstMove) {
 	var lst = [];
 
-	if ( map[p.y][p.x - 1].type != 'wall' )
-		lst.push({x: p.x - 1, y: p.y, move: firstMove || "west"});
-
 	if ( map[p.y - 1][p.x].type != 'wall' )
 		lst.push({x: p.x, y: p.y - 1, move: firstMove || "north"});
 
+	if ( map[p.y][p.x - 1].type != 'wall' )
+		lst.push({x: p.x - 1, y: p.y, move: firstMove || "west"});
+	
+	if ( map[p.y + 1][p.x].type != 'wall' )
+		lst.push({x: p.x, y: p.y + 1, move: firstMove || "south"});
+	
 	if ( map[p.y][p.x + 1].type != 'wall' )
 		lst.push({x: p.x + 1, y: p.y, move: firstMove || "east"});
 
-	if ( map[p.y + 1][p.x].type != 'wall' )
-		lst.push({x: p.x, y: p.y + 1, move: firstMove || "south"});
-
+	
 	return lst;
 }
 
