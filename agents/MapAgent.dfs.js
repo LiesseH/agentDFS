@@ -98,7 +98,7 @@ function findNext({position: p, map}) {
 		if (!map[np.y][np.x].visited)
 			return np.move;
 		else
-			lst = lst.concat(getNext({position: np, map}, np.move));
+			lst = getNext({position: np, map}, np.move).concat(lst);
 	}
 	process.exit();
 }
